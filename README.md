@@ -15,3 +15,10 @@ The JobCompletionNotificationListener is executed when job finishes. It inserts 
 
 ####Match page
 /teams/*teamName*/matches?year=*number* - Will show data per year. Any match can be selected
+
+### 3. The React app
+Is located in **/src/frontend**
+
+It was created following: https://es.reactjs.org/docs/create-a-new-react-app.html.
+
+The name chosen for React app is *"frontend"* (that's why path is /src/frontend). 
