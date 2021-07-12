@@ -36,7 +36,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
             Map<String, Team> teamData = createAllTeams();
             teamData.forEach((k, v) -> teamRepository.save(v));
             //Checks inserted teams
-            //teamRepository.findAll().forEach(team -> System.out.println(team.getId() + "|" + team.getTeamName() + "|" + team.getTotalMatches() + "|" + team.getTotalWins()));
+            teamRepository.findAll().forEach(team -> log.info("{} | {} | {} | {}", team.getId(), team.getTeamName(), team.getTotalMatches(), team.getTotalWins()));
         }
     }
 
@@ -69,6 +69,6 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
     private void logInsertedMatches() {
         log.info("!!! JOB FINISHED! Time to verify the results");
         //Checks inserted matches
-        //matchRepository.findAll().forEach(match -> System.out.println("Team 1: " + match.getTeam1() + " | Team 2: " + match.getTeam2() + " | Date: " + match.getDate()));
+        matchRepository.findAll().forEach(match -> log.info("Team 1: {} | Team 2: {} | Date: {}", match.getTeam1(), match.getTeam2(), match.getDate()));
     }
 }
