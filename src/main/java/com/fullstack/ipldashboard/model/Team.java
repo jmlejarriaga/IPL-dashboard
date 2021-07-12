@@ -1,15 +1,17 @@
 package com.fullstack.ipldashboard.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class Team {
     @Id
@@ -18,4 +20,7 @@ public class Team {
     private String teamName;
     private long totalMatches;
     private long totalWins;
+
+    @Transient //To avoid JPA tries to persist this field. We only want it to show matches on screen. Not stored anywhere.
+    private List<Match> matches;
 }
