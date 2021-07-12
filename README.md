@@ -6,4 +6,5 @@ This application does:
 The data consist on all IPL matches in the period 2000-2008. They come from  _"IPL Matches 2008-2020.csv"_ file.
    
 This is done by a Spring Batch Job that is executed every time the application stars (we haven't disabled automatic job execution in properties file). 
-   
+
+The JobCompletionNotificationListener is executed when job finishes. It inserts in _"Team"_ table all the teams specifying all match played and number of victories. 

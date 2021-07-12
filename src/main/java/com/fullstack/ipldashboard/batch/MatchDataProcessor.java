@@ -14,22 +14,21 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
     @Override
     public Match process(final MatchInput matchInput) {
         Teams teams = setTeam1AndTeam2(matchInput);
-        return Match.builder()
-                .id(Long.parseLong(matchInput.getId()))
-                .city(matchInput.getCity())
-                .date(LocalDate.parse(matchInput.getDate(), DateTimeFormatter.ofPattern("dd/MM/yyyy")))
-                .playerOfMatch(matchInput.getPlayer_of_match())
-                .venue(matchInput.getVenue())
-                .team1(teams.firstInningsTeam)
-                .team2(teams.secondInningsTeam)
-                .tossWinner(matchInput.getToss_winner())
-                .tossDecision(matchInput.getToss_decision())
-                .matchWinner(matchInput.getWinner())
-                .result(matchInput.getResult())
-                .resultMargin(matchInput.getResult_margin())
-                .umpire1(matchInput.getUmpire1())
-                .umpire2(matchInput.getUmpire2())
-                .build();
+        return new Match (
+                Long.parseLong(matchInput.getId()),
+                matchInput.getCity(),
+                LocalDate.parse(matchInput.getDate(), DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+                matchInput.getPlayer_of_match(),
+                matchInput.getVenue(),
+                teams.firstInningsTeam,
+                teams.secondInningsTeam,
+                matchInput.getToss_winner(),
+                matchInput.getToss_decision(),
+                matchInput.getWinner(),
+                matchInput.getResult(),
+                matchInput.getResult_margin(),
+                matchInput.getUmpire1(),
+                matchInput.getUmpire2());
     }
 
     private Teams setTeam1AndTeam2(MatchInput matchInput) {
